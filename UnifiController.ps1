@@ -4,8 +4,8 @@ $VMName = "UnifiController"
 $servername = "Clark-PC"
 $VMSwitch = "External vSwitch"
 
-New-VHD -Path $VHDpath -SizeBytes 20GB -Dynamic
-New-VM -Name $VMName -MemoryStartupBytes 2048MB -Generation 1
+New-VHD -Path $VHDpath -SizeBytes 10GB -Fixed
+New-VM -Name $VMName -MemoryStartupBytes 1024MB -Generation 1
 Add-VMHardDiskDrive -VMName $VMName -Path $VHDpath
 Set-VMDvdDrive -VMName $VMName -ControllerNumber 1 -Path $ISOpath
 Get-VMNetworkAdapter -VMName $VMName | Connect-VMNetworkAdapter -SwitchName $VMSwitch
