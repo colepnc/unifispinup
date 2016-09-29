@@ -31,10 +31,12 @@ iptables -F
 iptables -P INPUT DROP
 iptables -A INPUT -i lo -p all -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 8443 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 8843 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 8880 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -A INPUT -j DROP
+iptables-save > /etc/iptables.conf
+echo "iptables-restore < /etc/iptables.conf" >> /etc/rc.local
 reboot
