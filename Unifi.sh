@@ -26,6 +26,7 @@ echo "# deb http://www.ubnt.com/downloads/unifi/debian oldstable ubiquiti" >> /e
 apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50
 apt-get update
 apt-get install unifi -y
+sed -i -e 's/# unifi.https.port=8443/unifi.https.port=443/g' /usr/lib/unifi/data/system.properties
 apt-get install htop -y
 iptables -F
 iptables -P INPUT DROP
