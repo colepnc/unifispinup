@@ -38,6 +38,7 @@ iptables -A INPUT -p tcp -m tcp --dport 8880 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -A INPUT -j DROP
+su
 iptables-save > /etc/iptables.conf
-echo "iptables-restore < /etc/iptables.conf" >> /etc/rc.local
+sed -i "13i iptables-restore < /etc/iptables.conf" /etc/rc.local
 reboot
