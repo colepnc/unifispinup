@@ -4,6 +4,7 @@ $VMName = "UnifiController"
 $servername = "Clark-PC"
 $VMSwitch = "External vSwitch"
 
+Invoke-WebRequest "http://releases.ubuntu.com/16.04.1/ubuntu-16.04.1-server-amd64.iso" -UseBasicParsing -OutFile "$ISOpath"
 New-VHD -Path $VHDpath -SizeBytes 10GB -Fixed
 New-VM -Name $VMName -MemoryStartupBytes 1024MB -Generation 1
 Add-VMHardDiskDrive -VMName $VMName -Path $VHDpath
